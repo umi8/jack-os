@@ -79,24 +79,6 @@ class Math {
     }
 
     function boolean bit(int x, int j) {
-        var int i, tmp;
-        let i = 15;
-
-        while (i > -1) {
-            let tmp = twoToThe[i];
-
-            if (i = j) {
-                let x = x - tmp;
-                return x > 0;
-            }
-
-            if (x > tmp) {
-                let x = x - tmp;
-            }
-
-            let i = i - 1;
-        }
-        return false;
-
+        return x & twoToThe[j];
     }
 }

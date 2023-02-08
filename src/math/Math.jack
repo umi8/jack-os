@@ -4,7 +4,7 @@ class Math {
 
     function void init() {
         let twoToThe = Array.new(16);
-        let twoToThe[0] = 0;
+        let twoToThe[0] = 1;
         let twoToThe[1] = 2;
         let twoToThe[2] = 4;
         let twoToThe[3] = 8;

@@ -55,10 +55,22 @@ class Math {
     }
 
     function int divide(int x, int y) {
-        var int q, tmp;
+        var int q, tmp, sign;
 
-        if ((x < 0) | (y < 0)) {
+        if (y = 0) {
             return 0;
+        }
+
+        let sign = 1;
+
+        if (x < 0) {
+            let x = Math.abs(x);
+            let sign = Math.multiply(sign, -1);
+        }
+
+        if (y < 0) {
+            let y = Math.abs(y);
+            let sign = Math.multiply(sign, -1);
         }
 
         if (y > x) {
@@ -69,9 +81,9 @@ class Math {
 
         let tmp = x - (2 * q * y);
         if (tmp < y) {
-            return 2 * q;
+            return 2 * q * sign;
         } else {
-            return 2 * q + 1;
+            return 2 * q * sign + 1;
         }
     }
 

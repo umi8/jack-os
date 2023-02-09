@@ -55,7 +55,24 @@ class Math {
     }
 
     function int divide(int x, int y) {
-        return 0;
+        var int q, tmp;
+
+        if ((x < 0) | (y < 0)) {
+            return 0;
+        }
+
+        if (y > x) {
+            return 0;
+        }
+
+        let q = Math.divide(x, 2 * y);
+
+        let tmp = x - (2 * q * y);
+        if (tmp < y) {
+            return 2 * q;
+        } else {
+            return 2 * q + 1;
+        }
     }
 
     function int min(int x, int y) {

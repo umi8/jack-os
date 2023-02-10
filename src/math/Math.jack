@@ -55,7 +55,7 @@ class Math {
     }
 
     function int divide(int x, int y) {
-        var int q, tmp, sign;
+        var int q, sign;
 
         if (y = 0) {
             return 0;
@@ -79,8 +79,7 @@ class Math {
 
         let q = Math.divide(x, 2 * y);
 
-        let tmp = x - (2 * q * y);
-        if (tmp < y) {
+        if (x - (2 * q * y) < y) {
             return 2 * q * sign;
         } else {
             return 2 * q * sign + 1;
@@ -104,7 +103,31 @@ class Math {
     }
 
     function int sqrt(int x) {
-        return 0;
+        var int y, j, n, tmp;
+        var boolean isFoundNN;
+
+        let n = 0;
+        let j = 0;
+        let isFoundN = false;
+        while ((~isFoundN) & (n < 16)) {
+            if (x < twoToThe[n]) {
+                let isFoundN = true;
+            } else {
+                let n = n + 1;
+            }
+        }
+
+        let y = 0;
+        let j = Math.divide(n, 2) - 1;
+        while (j > -1) {
+            let tmp = Math.multiply(y + twoToThe[j], y + twoToThe[j]);
+            if (((tmp < x) | (tmp = x)) & (tmp > 0)) {
+                let y = y + twoToThe[j];
+            }
+            let j = j - 1;
+        }
+
+        return y;
     }
 
     function boolean bit(int x, int j) {

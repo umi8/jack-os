@@ -13,11 +13,17 @@
  */
 class Array {
 
+    static Array a;
+
     /** Constructs a new Array of the given size. */
     function Array new(int size) {
+        let a = Memory.alloc(size);
+        return a;
     }
 
     /** Disposes this array. */
     method void dispose() {
+        do Memory.deAlloc(a);
+        return;
     }
 }

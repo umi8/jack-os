@@ -145,7 +145,7 @@ class Screen {
         if ((dx < 0) & (dy < 0)) {
             while (((a > dx) | (a = dx)) & ((b > dy) | (b = dy))) {
                 do Screen.drawPixel(x1 + a, y1 + b);
-                if (adyMinusbdx > 0) {
+                if (adyMinusbdx < 0) {
                     let a = a - 1;
                     let adyMinusbdx = (a * dy) - (b * dx) + dy;
                 } else {
@@ -160,9 +160,9 @@ class Screen {
         if ((dx > 0) & (dy < 0)) {
             while (((a < dx) | (a = dx)) & ((b > dy) | (b = dy))) {
                 do Screen.drawPixel(x1 + a, y1 + b);
-                if (adyMinusbdx < 0) {
+                if (adyMinusbdx > 0) {
                     let a = a + 1;
-                    let adyMinusbdx = (a * dy) - (b * dx) + dy;
+                    let adyMinusbdx = (a * dy) - (b * dx) - dy;
                 } else {
                     let b = b - 1;
                     let adyMinusbdx = (a * dy) - (b * dx) + dx;
@@ -175,12 +175,12 @@ class Screen {
         if ((dx < 0) & (dy > 0)) {
             while (((a > dx) | (a = dx)) & ((b < dy) | (b = dy))) {
                 do Screen.drawPixel(x1 + a, y1 + b);
-                if (adyMinusbdx < 0) {
+                if (adyMinusbdx > 0) {
                     let a = a - 1;
                     let adyMinusbdx = (a * dy) - (b * dx) - dy;
                 } else {
                     let b = b + 1;
-                    let adyMinusbdx = (a * dy) - (b * dx) - dx;
+                    let adyMinusbdx = (a * dy) - (b * dx) + dx;
                 }
             }
             return;
@@ -191,6 +191,15 @@ class Screen {
     /** Draws a filled rectangle whose top left corner is (x1, y1)
      * and bottom right corner is (x2,y2), using the current color. */
     function void drawRectangle(int x1, int y1, int x2, int y2) {
+        var int dy, i;
+
+        let dy = y2 - y1;
+
+        while (i < dy) {
+            do Screen.drawLine(x1, y1 + i, x2, y1 + i);
+            let i = i + 1;
+        }
+
         return;
     }
 

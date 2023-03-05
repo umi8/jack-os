@@ -104,7 +104,7 @@ class Math {
 
     function int sqrt(int x) {
         var int y, j, n, tmp;
-        var boolean isFoundNN;
+        var boolean isFoundN;
 
         let n = 0;
         let j = 0;
